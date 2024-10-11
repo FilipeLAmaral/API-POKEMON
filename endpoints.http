@@ -1,0 +1,30 @@
+#PARA UTILIZAR ESSES ENDPOINTS É NECESSÁRIO INSTALAR A EXTENSÃO DO VSCODE "REST CLIENT"
+###
+
+GET http://localhost:3333/pokemon
+
+###
+
+POST http://localhost:3333/pokemon
+Content-Type: application/json
+
+{
+    "name": "charizard",
+    "tipagem": "fogo-voador",
+    "regiao": "Kanto"
+}
+
+###
+
+PUT http://localhost:3333/pokemon/id
+Content-Type: application/json
+
+{
+    "name": "Dratini",
+    "tipagem": "Dragon",
+    "regiao": "Kanto"
+}
+
+###
+
+DELETE http://localhost:3333/pokemon/id

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pokemon</title>
+</head>
+<body>
+
+    <input type="text" id="nome">
+    <input type="text" id="tipagem">
+    <input type="text" id="regiao">
+
+    <button onclick="CriarPokemon()">
+       Cadastrar   
+    </button>
+
+    <p id="pokemon"></p>
+    <script>
+
+        async function pegarPokemon() {
+
+        const resposta = await fetch('http://localhost:3333/pokemon', {
+         method: 'GET'
+
+        
+        })
+
+        const Pokemon = await resposta.json();
+        console.log(Pokemon);
+        const pokemon = document.getElementById('pokemon')
+        pokemon.innerHTML = pokemon[0].nome
+
+
+        }
+        pegarPaysandu();
+
+
+        async function criarPokemon() {
+
+            const nome = document.getElementById('nome').value
+            const tipagem = document.getElementById('tipagem').value
+            const regiao = document.getElementById('regiao').value
+
+          const pokemon = {
+
+            "nome": nome,
+            "tipagem": regiao,
+            "regiao": regiao
+
+          } 
+          const resposta = await fetch('http://localhost:3333/pokemon', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+
+              },
+              body: JSON.stringify(pokemon)
+          });
+
+        }
+
+    </script>
+    
+</body>
+</html>
